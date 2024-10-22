@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,11 +12,12 @@ public class ScoreText : MonoBehaviour
     private void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        scoreButton.scoreButton.onClick.AddListener(RefreshUI);
+        scoreButton.OnScoreChanged?.Invoke(1);
+        scoreButton.OnScoreChanged += RefreshUI;
     }
 
-    private void RefreshUI()
+    private void RefreshUI(int score)
     {
-        scoreText.text = scoreButton.score.ToString();
+        scoreText.text = score.ToString();
     }
 }

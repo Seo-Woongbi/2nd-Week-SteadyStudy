@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class ScoreButton : MonoBehaviour
 {
     public Button scoreButton;
+    public event Action <int> OnScoreChanged;
     public int score = 0;
     
     private void Awake()
@@ -17,17 +19,6 @@ public class ScoreButton : MonoBehaviour
     private void PointUp()
     {
         score += 1;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        OnScoreChanged?.Invoke(score);
     }
 }
