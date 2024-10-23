@@ -12,7 +12,7 @@ public class ScoreText : MonoBehaviour
     private void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-        scoreButton.OnScoreChanged?.Invoke(1);
+        //scoreButton.OnScoreChanged?.Invoke(1);
         scoreButton.OnScoreChanged += RefreshUI;
     }
 
